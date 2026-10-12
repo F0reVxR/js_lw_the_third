@@ -473,10 +473,51 @@ function sortByAsc(arr) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-
+function shuffleChar(str, iterations) {
+    if (str.length < 2 || iterations <= 0) {
+        return str
+    }
+    const half = (str.length + 1) >> 1
+    const next = new Array(str.length)
+    for (let i = 0; i < str.length; i += 1) {
+        if (i < half) {
+        next[i] = 2 * i
+        } else {
+        next[i] = 2 * (i - half) + 1
+        }
+    }
+    const resultChars = new Array(str.length)
+    const visited = new Array(str.length)
+    const cycle = new Array(str.length)
+    for (let start = 0; start < str.length; start += 1) {
+        if (visited[start]) {
+        continue
+        }
+        let length = 0
+        let current = start
+        do {
+        visited[current] = true
+        current = next[current]
+        length += 1
+        } while (current !== start)
+        current = start
+        for (let t = 0; t < length; t += 1) {
+        cycle[t] = current
+        current = next[current]
+        }
+        const shift = iterations % length
+        for (let t = 0; t < length; t += 1) {
+        const sourcePosition = (t + shift) % length
+        resultChars[cycle[t]] = str[cycle[sourcePosition]]
+        }
+    }
+    let result = ''
+    for (let i = 0; i < str.length; i += 1) {
+        result += resultChars[i]
+    }
+    return result
 }
-
+console.log(shuffleChar('012345', 1))
 /**
  * Returns the nearest largest integer consisting of the digits of the given positive integer.
  * If there is no such number, it returns the original number.
