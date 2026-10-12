@@ -79,15 +79,13 @@ function getMaxNumber(a, b, c) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
 function canQueenCaptureKing(queen, king) {
-    switch (king.Position.x){
-        case ((king.Position.x === (queen.Position.x + 1))) && ((king.Position.x === (queen.Position.x + 1))):
-            return true;
-            break;
-        case 1:
-        return 0
-    }
-}
+    const sameFile = queen.x === king.x
+    const sameRank = queen.y === king.y
+    const sameDiagonal = Math.abs(queen.x - king.x) === Math.abs(queen.y - king.y)
 
+    return sameFile || sameRank || sameDiagonal
+}
+console.log(canQueenCaptureKing({x: 1, y: 1}, {x: 5, y: 5}))
 /**
  * Determines whether a triangle is isosceles based on its side lengths.
  * In this task, the use of methods of the String and Array classes is not allowed.
