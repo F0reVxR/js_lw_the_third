@@ -24,8 +24,8 @@
 function isPositive(number) {
     return number >= 0 ? true: false
 }
-console.log(isPositive(-2))
-console.log(isPositive(0))
+// console.log(isPositive(-2))
+// console.log(isPositive(0))
 /**
  * Returns the maximum of three numbers without using Array and Math classes methods.
  *
@@ -39,10 +39,26 @@ console.log(isPositive(0))
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-
+function getMaxNumber(a, b, c) {
+    if (a >= b){
+        if (a >= c){
+            return a
+        }
+        else{
+            return c
+        }
+    }
+    else{
+        if (b >= c){
+            return b
+        }
+        else{
+            return c
+        }
+    }
 }
-
+// console.log(getMaxNumber(-2, -6, -1))
+// console.log(getMaxNumber(0, 0, 0))
 /**
  * Checks if a queen can capture a king in the next move on an 8x8 chessboard.
  * See more details at https://en.wikipedia.org/wiki/Queen_(chess)
