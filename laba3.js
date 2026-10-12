@@ -517,7 +517,7 @@ function shuffleChar(str, iterations) {
     }
     return result
 }
-console.log(shuffleChar('012345', 1))
+//console.log(shuffleChar('012345', 1))
 /**
  * Returns the nearest largest integer consisting of the digits of the given positive integer.
  * If there is no such number, it returns the original number.
@@ -536,7 +536,54 @@ console.log(shuffleChar('012345', 1))
  * 321321   => 322113
  *
  */
-function getNearestBigger(/* number */) {
-    
+function getNearestBigger(number) {
+    if (number < 10) {
+        return number
+    }
+    const digits = []
+    let temp = number
+    while (temp > 0) {
+        digits[digits.length] = temp % 10
+        temp = (temp - (temp % 10)) / 10
+    }
+    const size = digits.length
+    let pivot = -1
+    for (let i = 1; i < size; i += 1) {
+        if (digits[i] < digits[i - 1]) {
+        pivot = i
+        break
+        }
+    }
+    if (pivot === -1) {
+        return number
+    }
+    let swapIndex = pivot - 1
+    for (let i = pivot - 1; i >= 0; i -= 1) {
+        if (digits[i] > digits[pivot]) {
+        swapIndex = i
+        break
+        }
+    }
+    const tempDigit = digits[pivot]
+    digits[pivot] = digits[swapIndex]
+    digits[swapIndex] = tempDigit
+    let left = 0
+    let right = pivot - 1
+    while (left < right) {
+        const swapValue = digits[left]
+        digits[left] = digits[right]
+        digits[right] = swapValue
+        left += 1
+        right -= 1
+    }
+    let result = 0
+    let multiplier = 1
+
+    for (let i = 0; i < size; i += 1) {
+        result += digits[i] * multiplier
+        multiplier *= 10
+    }
+    return result
 }
+console.log(getNearestBigger(12345))
 
