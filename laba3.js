@@ -221,10 +221,20 @@ function convertNumberToString(numberStr) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
+function isPalindrome(str) {
+    let left = 0
+    let right = str.length - 1
 
+    while (left < right) {
+        if (str[left] !== str[right]) {
+        return false
+        }
+        left++
+        right--
+    }
+    return true
 }
-
+//console.log(isPalindrome('dfsdsfd'))
 /**
  * Finds the first occurrence of a letter in a string.
  * In this task, the use of methods of the String and Array classes is not allowed.
