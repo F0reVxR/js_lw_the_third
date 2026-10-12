@@ -249,10 +249,14 @@ function isPalindrome(str) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-
+function getIndexOf(str, letter) {
+    for (let i = 0; i < str.length; ++i){
+        if (str[i] == letter){
+            return i
+        }
+    }
 }
-
+//console.log(getIndexOf('dfkdfjgdfgj', 'd'))
 /**
  * Checks if a number contains a specific digit.
  * In this task, the use of methods of the String and Array classes is not allowed.
