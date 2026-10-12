@@ -78,8 +78,14 @@ function getMaxNumber(a, b, c) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-
+function canQueenCaptureKing(queen, king) {
+    switch (king.Position.x){
+        case ((king.Position.x === (queen.Position.x + 1))) && ((king.Position.x === (queen.Position.x + 1))):
+            return true;
+            break;
+        case 1:
+        return 0
+    }
 }
 
 /**
@@ -100,10 +106,16 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-
+function isIsoscelesTriangle(a, b, c) {
+    if (((a === b) || (a === c)) || ((b === c))){
+        return true
+    }
+    else{
+        return false
+    }
 }
-
+// console.log(isIsoscelesTriangle(2, 2, 1))
+// console.log(isIsoscelesTriangle(3, 2, 1))
 /**
  * Converts a number to Roman numerals. The number will be between 1 and 39.
  * In this task, the use of methods of the String and Array classes is not allowed.
