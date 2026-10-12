@@ -272,10 +272,15 @@ function getIndexOf(str, letter) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-
+function isContainNumber(num, digit) {
+    for (let i = 0; i < String(num).length; ++i){
+        if ((String(num))[i] === String(digit)){
+            return true
+        }
+    }
+    return false
 }
-
+//console.log(isContainNumber(1123, 5))
 /**
  * Finds the index of an element in an array where the sum of elements to the left equals the sum of elements to the right.
  * If such an index does not return -1.
