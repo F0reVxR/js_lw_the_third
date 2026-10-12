@@ -25,6 +25,7 @@ function isPositive(number) {
     return number >= 0 ? true: false
 }
 console.log(isPositive(-2))
+console.log(isPositive(0))
 /**
  * Returns the maximum of three numbers without using Array and Math classes methods.
  *
