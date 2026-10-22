@@ -253,8 +253,10 @@ function getIndexOf(str, letter) {
             return i
         }
     }
+    return -1;
 }
-//console.log(getIndexOf('dfkdfjgdfgj', 'd'))
+console.log(getIndexOf('dfkdfjgdfgj', 'd'))
+console.log(getIndexOf('dfkdfjgdfgj', 'a'))
 /**
  * Checks if a number contains a specific digit.
  * In this task, the use of methods of the String and Array classes is not allowed.
